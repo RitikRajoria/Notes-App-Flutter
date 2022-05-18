@@ -16,6 +16,10 @@ class AppTheme {
     Colors.orange.shade100,
     Colors.blue.shade100,
     Colors.green.shade100,
+    Color(0xffB5EAD7),
+    Color(0xffE2F0CB),
+    Color(0xffF4E5C8),
+    Color(0xffCDC0C0),
   ];
 
   //textStyle

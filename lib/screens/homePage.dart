@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                   itemCount: snapshot.data.docs.length,
                   itemBuilder: (context, index) {
                     Random random = new Random();
-                    Color cardbg = AppTheme.cardsColor[random.nextInt(8)];
+                    Color cardbg = AppTheme.cardsColor[random.nextInt(12)];
                     Map data = snapshot.data!.docs[index].data() as Map;
                     DateTime dateTime = data['created'].toDate();
                     String formattedTime =
