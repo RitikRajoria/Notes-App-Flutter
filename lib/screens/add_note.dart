@@ -66,6 +66,7 @@ class _AddNotesPageState extends State<AddNotesPage> {
                           title = _val;
                           print(title);
                         },
+                        maxLines: 1,
                       ),
                       //
                       SizedBox(
