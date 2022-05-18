@@ -34,7 +34,8 @@ class _ViewNotePageState extends State<ViewNotePage> {
   @override
   void initState() {
     titleController.text = widget.data['title'];
-    descriptionController.text = widget.data['description'];
+    descriptionController.text =
+        widget.data['description'] != null ? widget.data['description'] : "";
     super.initState();
   }
 
@@ -87,7 +88,6 @@ class _ViewNotePageState extends State<ViewNotePage> {
                       ),
                       //
                       TextField(
-                        autofocus: true,
                         focusNode: titleFocus,
                         controller: titleController,
                         style: GoogleFonts.lato(
@@ -121,7 +121,6 @@ class _ViewNotePageState extends State<ViewNotePage> {
                       Container(
                         width: double.infinity,
                         child: TextField(
-                          autofocus: true,
                           focusNode: desFocus,
                           controller: descriptionController,
                           style: GoogleFonts.lato(
@@ -161,14 +160,23 @@ class _ViewNotePageState extends State<ViewNotePage> {
   }
 
   void update() async {
+    const snackBar = SnackBar(
+      content: Text('Title can\'t be Empty'),
+      duration: Duration(seconds: 3),
+    );
+
     // updating to db
-    var data = {
-      'title': titleController.text,
-      'description': descriptionController.text,
-      'created': time,
-    };
-    await widget.ref.update(data);
-    //
-    Navigator.of(context).pop();
+    if (titleController.text.isNotEmpty) {
+      var data = {
+        'title': titleController.text,
+        'description': descriptionController.text,
+        'created': time,
+      };
+      await widget.ref.update(data);
+      //
+      Navigator.of(context).pop();
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 }

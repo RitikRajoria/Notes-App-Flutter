@@ -46,11 +46,7 @@ class _AddNotesPageState extends State<AddNotesPage> {
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.grey.shade600,
                               ),
-                              onPressed: title == null
-                                  ? addError
-                                  : des == null
-                                      ? addError
-                                      : add,
+                              onPressed: title == null ? addError : add,
                               child: Icon(Icons.save),
                             ),
                           ],
@@ -124,7 +120,7 @@ class _AddNotesPageState extends State<AddNotesPage> {
 
   void addError() {
     const snackBar = SnackBar(
-      content: Text('Fill Both Fields!'),
+      content: Text('Fill Title!'),
       duration: Duration(seconds: 3),
     );
 
