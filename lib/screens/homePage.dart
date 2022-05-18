@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -70,12 +70,27 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
       ),
       body: SafeArea(
-        child: FutureBuilder<QuerySnapshot>(
-          future: ref.get(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                  itemCount: snapshot.data!.docs.length,
+        child: StreamBuilder<QuerySnapshot>(
+          stream: ref.snapshots(),
+          builder: (context, AsyncSnapshot snapshot) {
+            //
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              );
+            }
+            if (snapshot.hasData && snapshot.data.docs.length != 0) {
+              //
+
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MasonryGridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 0,
+                  crossAxisSpacing: 0,
+                  itemCount: snapshot.data.docs.length,
                   itemBuilder: (context, index) {
                     Random random = new Random();
                     Color cardbg = AppTheme.cardsColor[random.nextInt(8)];
@@ -83,61 +98,81 @@ class _HomePageState extends State<HomePage> {
                     DateTime dateTime = data['created'].toDate();
                     String formattedTime =
                         DateFormat.yMMMd().add_jm().format(dateTime);
-                    return Padding(
-                      padding: const EdgeInsets.only(left: 8, right: 8),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(
-                                  builder: (context) => ViewNotePage(
-                                      bgColor: cardbg,
-                                      data: data,
-                                      time: formattedTime,
-                                      ref: snapshot
-                                          .data!.docs[index].reference)))
-                              .then((value) {
-                            setState(() {});
-                          });
-                        },
-                        child: Card(
-                          color: cardbg,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "${data['title']}",
-                                  style: GoogleFonts.lato(
-                                      color: Colors.black87,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                //
-                                SizedBox(height: 8),
-                                //
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: Container(
-                                    child: Text(
-                                      formattedTime,
-                                      style: GoogleFonts.telex(
-                                          color: Colors.black87,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.normal),
-                                    ),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(
+                                builder: (context) => ViewNotePage(
+                                    bgColor: cardbg,
+                                    data: data,
+                                    time: formattedTime,
+                                    ref: snapshot.data!.docs[index].reference)))
+                            .then((value) {
+                          setState(() {});
+                        });
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        color: cardbg,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "${data['title']}",
+                                style: GoogleFonts.lato(
+                                    color: Colors.black87,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              //
+                              SizedBox(height: 8),
+                              //
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: Container(
+                                  child: Text(
+                                    formattedTime,
+                                    style: GoogleFonts.telex(
+                                        color: Colors.black87,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.normal),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
                     );
-                  });
+                  },
+                ),
+              );
             } else {
               return Center(
-                child: Text("loading..."),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "No Notes Yet!",
+                      style: GoogleFonts.lato(
+                          fontSize: 24, fontWeight: FontWeight.w400),
+                    ),
+                    //
+                    SizedBox(
+                      height: 3,
+                    ),
+                    //
+                    Text(
+                      "Add notes by tapping on plus button.",
+                      style: GoogleFonts.lato(
+                          fontSize: 14, fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
               );
             }
           },
@@ -148,7 +183,6 @@ class _HomePageState extends State<HomePage> {
 
   Color lighten(Color color, [double amount = .1]) {
     assert(amount >= 0 && amount <= 1);
-
     final hsl = HSLColor.fromColor(color);
     final hslLight =
         hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));

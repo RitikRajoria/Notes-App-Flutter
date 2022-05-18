@@ -90,14 +90,12 @@ class _ViewNotePageState extends State<ViewNotePage> {
                         autofocus: true,
                         focusNode: titleFocus,
                         controller: titleController,
-                        // "${widget.data['title']}",
                         style: GoogleFonts.lato(
                             color: Colors.black,
                             fontSize: 32,
                             fontWeight: FontWeight.bold),
-                        // onChanged: (_val) {
-                        //   titleController.text = _val;
-                        // },
+                        decoration:
+                            InputDecoration.collapsed(hintText: "Title"),
                         maxLines: 1,
                       ),
                       //
@@ -126,14 +124,12 @@ class _ViewNotePageState extends State<ViewNotePage> {
                           autofocus: true,
                           focusNode: desFocus,
                           controller: descriptionController,
-                          // "${widget.data['description']}",
                           style: GoogleFonts.lato(
                               color: Colors.black,
                               fontSize: 20,
                               fontWeight: FontWeight.w500),
-                          // onChanged: (val) {
-                          //   descriptionController.text = val;
-                          // },
+                          decoration: InputDecoration.collapsed(
+                              hintText: "Note description"),
                           maxLines: 20,
                         ),
                       ),

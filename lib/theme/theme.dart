@@ -10,7 +10,7 @@ class AppTheme {
   static List<Color> cardsColor = [
     Colors.white,
     Colors.red.shade100,
-    Colors.blueGrey.shade300,
+    Colors.blueGrey.shade100,
     Colors.pink.shade100,
     Colors.purple.shade100,
     Colors.orange.shade100,
