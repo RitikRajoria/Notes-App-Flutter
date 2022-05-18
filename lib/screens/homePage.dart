@@ -19,10 +19,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  CollectionReference ref = FirebaseFirestore.instance
+  final ref = FirebaseFirestore.instance
       .collection('users')
       .doc(FirebaseAuth.instance.currentUser!.uid)
-      .collection('notes');
+      .collection('notes')
+      .orderBy('created', descending: true);
 
   @override
   Widget build(BuildContext context) {
