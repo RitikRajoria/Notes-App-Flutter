@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static Color mainColor = Color(0xff000633);
-  static Color bgColor = Color.fromARGB(255, 194, 194, 252);
+  static Color bgColor = Color(0xff070706);
   static Color accentColor = Color(0xff0065ff);
 
   //card
@@ -15,8 +15,7 @@ class AppTheme {
     Colors.purple.shade100,
     Colors.orange.shade100,
     Colors.blue.shade100,
-    Colors.green.shade100,
-    Colors.blueGrey.shade200,
+    Colors.green.shade200,
   ];
 
   //textStyle

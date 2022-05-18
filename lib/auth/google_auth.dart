@@ -57,7 +57,7 @@ class GoogleSignInProvider extends ChangeNotifier {
         .doc(user.uid)
         .set(loginModel.toMap())
         .then((value) {
-      Navigator.of(context).push(
+      Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => HomePage(),
         ),
