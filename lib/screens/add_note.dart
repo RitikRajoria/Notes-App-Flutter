@@ -31,30 +31,35 @@ class _AddNotesPageState extends State<AddNotesPage> {
                     children: [
                       Container(
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.grey.shade600,
+                            Container(
+                              height: 55,
+                              width: 55,
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                border:
+                                    Border.all(width: 2, color: Colors.grey),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Icon(Icons.arrow_back_ios),
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.grey.shade600,
+                              child: Row(
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    icon: Icon(Icons.arrow_back_ios,
+                                        color: Colors.grey),
+                                  ),
+                                ],
                               ),
-                              onPressed: title == null ? addError : add,
-                              child: Icon(Icons.save),
                             ),
                           ],
                         ),
                       ),
                       //
                       SizedBox(
-                        height: 12,
+                        height: 8,
                       ),
                       //
                       TextFormField(
@@ -74,7 +79,7 @@ class _AddNotesPageState extends State<AddNotesPage> {
                       ),
                       //
                       Container(
-                        height: (size.height) * 0.75,
+                        height: (size.height) * 0.72,
                         width: double.infinity,
                         child: TextFormField(
                           decoration: InputDecoration.collapsed(
@@ -84,7 +89,23 @@ class _AddNotesPageState extends State<AddNotesPage> {
                           onChanged: (val) {
                             des = val;
                           },
-                          maxLines: 20,
+                          maxLines: 24,
+                        ),
+                      ),
+                      //
+                      SizedBox(
+                        height: 8,
+                      ),
+                      //
+                      Container(
+                        height: 45,
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.grey,
+                          ),
+                          onPressed: title == null ? addError : add,
+                          child: Text("SAVE"),
                         ),
                       ),
                     ],

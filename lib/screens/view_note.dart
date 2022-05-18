@@ -61,22 +61,24 @@ class _ViewNotePageState extends State<ViewNotePage> {
                     children: [
                       Container(
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: darkbg,
+                            Container(
+                              height: 55,
+                              width: 55,
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                border: Border.all(width: 2, color: darkbg),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              onPressed: update,
-                              child: Icon(Icons.arrow_back_ios),
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: darkbg,
-                              ),
-                              onPressed: delete,
-                              child: Icon(
-                                Icons.delete_forever,
+                              child: Row(
+                                children: [
+                                  IconButton(
+                                    onPressed: update,
+                                    icon: Icon(Icons.arrow_back_ios,
+                                        color: darkbg),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -84,7 +86,7 @@ class _ViewNotePageState extends State<ViewNotePage> {
                       ),
                       //
                       SizedBox(
-                        height: 12,
+                        height: 8,
                       ),
                       //
                       TextField(
@@ -119,17 +121,34 @@ class _ViewNotePageState extends State<ViewNotePage> {
                       ),
                       //
                       Container(
+                        height: (size.height) * 0.675,
                         width: double.infinity,
                         child: TextField(
                           focusNode: desFocus,
                           controller: descriptionController,
                           style: GoogleFonts.lato(
                               color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400),
                           decoration: InputDecoration.collapsed(
                               hintText: "Note description"),
-                          maxLines: 20,
+                          maxLines: 23,
+                        ),
+                      ),
+                      //
+                      SizedBox(
+                        height: 8,
+                      ),
+                      //
+                      Container(
+                        height: 45,
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: darkbg,
+                          ),
+                          onPressed: delete,
+                          child: Text("DELETE"),
                         ),
                       ),
                     ],
