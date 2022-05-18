@@ -5,9 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:notes_app_with_bloc/auth/google_auth.dart';
 import 'package:notes_app_with_bloc/screens/add_note.dart';
 import 'package:notes_app_with_bloc/screens/view_note.dart';
 import 'package:notes_app_with_bloc/theme/theme.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,12 +29,19 @@ class _HomePageState extends State<HomePage> {
     final lightbg = lighten(AppTheme.bgColor);
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
+        leading: IconButton(
             onPressed: () {
               setState(() {});
             },
-            icon: Icon(Icons.replay_outlined),
+            icon: Icon(Icons.refresh_outlined)),
+        actions: [
+          IconButton(
+            onPressed: () {
+              final provider =
+                  Provider.of<GoogleSignInProvider>(context, listen: false);
+              provider.logOut(context);
+            },
+            icon: Icon(Icons.logout_outlined),
           ),
         ],
         centerTitle: true,
@@ -104,6 +113,8 @@ class _HomePageState extends State<HomePage> {
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold),
                                 ),
+                                //
+                                SizedBox(height: 8),
                                 //
                                 Align(
                                   alignment: Alignment.bottomRight,

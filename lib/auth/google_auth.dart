@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:notes_app_with_bloc/model/login_user_model.dart';
 import 'package:notes_app_with_bloc/screens/homePage.dart';
+import 'package:notes_app_with_bloc/screens/loginPage.dart';
 
 class GoogleSignInProvider extends ChangeNotifier {
   final googleSignIn = GoogleSignIn();
@@ -64,5 +65,12 @@ class GoogleSignInProvider extends ChangeNotifier {
       );
       print("page pushed");
     });
+  }
+
+  Future logOut(BuildContext context) async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    await _auth.signOut();
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
   }
 }
