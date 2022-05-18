@@ -101,8 +101,8 @@ class _ViewNotePageState extends State<ViewNotePage> {
                         decoration:
                             InputDecoration.collapsed(hintText: "Title"),
                         maxLines: 1,
-                        onChanged: (_) {
-                          change = true;
+                        onChanged: (val) {
+                          changeNotify();
                         },
                       ),
                       //
@@ -138,8 +138,8 @@ class _ViewNotePageState extends State<ViewNotePage> {
                           decoration: InputDecoration.collapsed(
                               hintText: "Note description"),
                           maxLines: 23,
-                          onChanged: (_) {
-                            change = true;
+                          onChanged: (val) {
+                            changeNotify();
                           },
                         ),
                       ),
@@ -205,6 +205,12 @@ class _ViewNotePageState extends State<ViewNotePage> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
+  }
+
+  void changeNotify() {
+    setState(() {
+      change = true;
+    });
   }
 
   void back() {
