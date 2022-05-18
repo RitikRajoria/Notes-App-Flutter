@@ -31,6 +31,8 @@ class _ViewNotePageState extends State<ViewNotePage> {
   FocusNode titleFocus = FocusNode();
   FocusNode desFocus = FocusNode();
 
+  bool change = false;
+
   @override
   void initState() {
     titleController.text = widget.data['title'];
@@ -74,7 +76,7 @@ class _ViewNotePageState extends State<ViewNotePage> {
                               child: Row(
                                 children: [
                                   IconButton(
-                                    onPressed: update,
+                                    onPressed: change == true ? update : back,
                                     icon: Icon(Icons.arrow_back_ios,
                                         color: darkbg),
                                   ),
@@ -99,6 +101,9 @@ class _ViewNotePageState extends State<ViewNotePage> {
                         decoration:
                             InputDecoration.collapsed(hintText: "Title"),
                         maxLines: 1,
+                        onChanged: (_) {
+                          change = true;
+                        },
                       ),
                       //
                       SizedBox(
@@ -133,6 +138,9 @@ class _ViewNotePageState extends State<ViewNotePage> {
                           decoration: InputDecoration.collapsed(
                               hintText: "Note description"),
                           maxLines: 23,
+                          onChanged: (_) {
+                            change = true;
+                          },
                         ),
                       ),
                       //
@@ -197,5 +205,9 @@ class _ViewNotePageState extends State<ViewNotePage> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
+  }
+
+  void back() {
+    Navigator.of(context).pop();
   }
 }
