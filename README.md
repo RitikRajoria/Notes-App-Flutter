@@ -1,12 +1,8 @@
-# Weather App Flutter
+# Notes App Flutter
 
-A Flutter application to view current weather status and 5 day weather forecast.
+A Flutter application to create and save notes on cloud using firebase and firestore.
 
-<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/1.jpg.jpg" width="180"/> &nbsp;
-<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/2.jpg.jpg" width="180"/>&nbsp;
-<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/3.jpg.jpg" width="180"/>&nbsp;
-<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/4.jpg.jpg" width="180"/>&nbsp;
-<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/5.jpg.jpg" width="180"/>&nbsp;
+<img src="Screenshots/1.jpg" width="180"/> &nbsp; <img src="Screenshots/2.jpg" width="180"/> &nbsp; <img src="Screenshots/3.jpg" width="180"/> &nbsp; <img src="Screenshots/4.jpg" width="180"/> &nbsp; <img src="Screenshots/5.jpg" width="180"/>
 
 ### Prerequisites
 
