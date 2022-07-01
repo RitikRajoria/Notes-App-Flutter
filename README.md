@@ -2,11 +2,11 @@
 
 A Flutter application to view current weather status and 5 day weather forecast.
 
-<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/1.jpg.jpg?raw=true" width="180"/> &nbsp;
-<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/2.jpg.jpg?raw=true" width="180"/>&nbsp;
-<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/3.jpg.jpg?raw=true" width="180"/>&nbsp;
-<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/4.jpg.jpg?raw=true" width="180"/>&nbsp;
-<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/5.jpg.jpg?raw=true" width="180"/>&nbsp;
+<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/1.jpg.jpg" width="180"/> &nbsp;
+<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/2.jpg.jpg" width="180"/>&nbsp;
+<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/3.jpg.jpg" width="180"/>&nbsp;
+<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/4.jpg.jpg" width="180"/>&nbsp;
+<img src="https://github.com/RitikRajoria/Notes-App-Flutter/blob/Notes-Functionality/App%20Screenshots/5.jpg.jpg" width="180"/>&nbsp;
 
 ### Prerequisites
 
