@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey.shade900,
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
@@ -62,7 +62,8 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: (size.height) * 0.06,
               ),
-              Expanded(
+              Container(
+                height: 75,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ElevatedButton(
